@@ -1,0 +1,20 @@
+version: '3.5'
+
+services:
+  telegram-download-daemon:
+    #build: .
+    image: alfem/telegram-download-daemon:latest
+    environment:
+      TELEGRAM_DAEMON_API_ID: "10860801"
+      TELEGRAM_DAEMON_API_HASH: "b8691a4e1d1a7d9480f11d1211ff3d26"
+      TELEGRAM_DAEMON_CHANNEL: "-1001133894637"
+      TELEGRAM_DAEMON_DEST: "/downloads"
+      TELEGRAM_DAEMON_SESSION_PATH: "/session"
+    volumes:
+       - downloads:/downloads
+       - sessions:/session
+    restart: unless-stopped
+
+volumes:
+    downloads:
+    sessions:
